@@ -32,7 +32,7 @@ pipeline {
      stage ('SAST') {
       steps {
         withSonarQubeEnv('sonar') {
-          sh 'mvn clean install sonar:sonar'
+          sh 'sudo mvn clean install sonar:sonar'
           sh 'cat target/sonar/report-task.txt'
         }
       }
