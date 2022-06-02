@@ -29,6 +29,11 @@ pipeline {
         
       }
     }
+     stage ('Build') {
+      steps {
+        sh 'sudo mvn clean install'
+      }
+    }
      stage ('SAST') {
       steps {
         sh 'sudo mvn clean install sonar:sonar -Dsonar.host.url=http://54.89.170.44:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectName=JavaVurnability'
