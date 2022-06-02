@@ -31,10 +31,7 @@ pipeline {
     }
      stage ('SAST') {
       steps {
-        withSonarQubeEnv('sonar') {
-          sh 'sudo mvn clean install sonar:sonar'
-          sh 'cat target/sonar/report-task.txt'
-        }
+        sh 'sudo mvn clean install sonar:sonar -Dsonar.host.url=http://54.82.126.117:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectName=JavaVurnability'
       }
     }
 	  
