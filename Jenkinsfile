@@ -36,13 +36,13 @@ pipeline {
     }
      stage ('SAST') {
       steps {
-        sh 'sudo mvn clean install sonar:sonar -Dsonar.host.url=http://54.89.170.44:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectName=JavaVurnability'
+        sh 'sudo mvn clean install sonar:sonar -Dsonar.host.url=http://54.221.95.105:9000 -Dsonar.login=admin -Dsonar.password=admin123 -Dsonar.projectName=JavaVurnability'
       }
     }
      stage ('Deploy-To-Tomcat') {
             steps {
            sshagent(['ee3c29f7-1033-459f-a644-0d3c22982d78']) {
-                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@54.234.11.58:/home/ubuntu/project/apache-tomcat-9.0.62/webapps/VulnerableJavaWebApplication.war'
+                sh 'scp -o StrictHostKeyChecking=no target/*.war ubuntu@54.226.71.32:/home/ubuntu/project/apache-tomcat-9.0.62/webapps/VulnerableJavaWebApplication.war'
               }      
            }       
     }
